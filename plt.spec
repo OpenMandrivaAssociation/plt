@@ -76,7 +76,10 @@ MzScheme and MrEd applications.
 
 %build
 cd src
-%configure2_5x --enable-shared CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
+%configure2_5x \
+    --enable-shared \
+    --enable-lt=%{_datadir}/libtool/ltmain.sh \
+    CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
 # parallel build doesn't work
 make
 
