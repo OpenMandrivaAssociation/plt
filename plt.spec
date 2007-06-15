@@ -76,6 +76,7 @@ MzScheme and MrEd applications.
 
 %build
 cd src
+(cd lt && libtoolize --force)
 %configure2_5x \
     --enable-shared \
     CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
