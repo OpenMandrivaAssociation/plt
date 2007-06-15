@@ -1,6 +1,6 @@
 %define	name 	plt
-%define version 350
-%define release %mkrel 2
+%define version 370
+%define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
 
@@ -10,8 +10,8 @@ Release:	%{release}
 Summary:	PLT Scheme
 License:	LGPL
 Group:		Development/Other
-Source:		http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tar.bz2
-Patch:		%{name}-350.destdir.patch
+Source:		http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
+Patch:		%{name}-370-destdir.patch
 Url:		http://www.plt-scheme.org
 BuildRequires:	X11-devel
 BuildRequires:	chrpath
@@ -71,13 +71,14 @@ DrScheme is the graphical development environment for creating
 MzScheme and MrEd applications.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 %patch0 -p 1
 
 %build
 cd src
 %configure2_5x --enable-shared CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
-%make
+# parallel build doesn't work
+make
 
 %install
 rm -rf %{buildroot}
@@ -158,15 +159,13 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libmzscheme-%{version}.so
-%{_libdir}/libmzgc-%{version}.so
-%{_libdir}/libmred-%{version}.so
+%{_libdir}/libmzscheme3m-%{version}.so
+%{_libdir}/libmred3m-%{version}.so
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
-%{_libdir}/libmzscheme.so
-%{_libdir}/libmzgc.so
-%{_libdir}/libmred.so
+%{_libdir}/libmzscheme3m.so
+%{_libdir}/libmred3m.so
 %{_libdir}/*.la
 %{_includedir}/*
 
@@ -184,4 +183,3 @@ rm -rf %{buildroot}
 %{_bindir}/drscheme
 %{_mandir}/man1/drscheme.1*
 %{_datadir}/%{name}/doc/drscheme
-
