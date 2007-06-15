@@ -76,8 +76,6 @@ MzScheme and MrEd applications.
 
 %build
 cd src
-# use system libtool, as local one barfs about /usr/lib64
-cp -f %{_datadir}/libtool/ltmain.sh lt
 %configure2_5x \
     --enable-shared \
     CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
