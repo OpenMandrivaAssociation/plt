@@ -11,7 +11,8 @@ Summary:	PLT Scheme
 License:	LGPL
 Group:		Development/Other
 Source:		http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
-Patch:		%{name}-370-destdir.patch
+Patch0:		%{name}-370-destdir.patch
+Patch1:		%{name}-370-fix-libtool-use.patch
 Url:		http://www.plt-scheme.org
 BuildRequires:	X11-devel
 BuildRequires:	chrpath
@@ -73,10 +74,10 @@ MzScheme and MrEd applications.
 %prep
 %setup -q
 %patch0 -p 1
+%patch1 -p 1
 
 %build
 cd src
-(cd lt && libtoolize --force)
 %configure2_5x \
     --enable-shared \
     CFLAGS="$CFLAGS -DDONT_INLINE_NZERO_TEST"
