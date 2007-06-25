@@ -10,7 +10,8 @@ Release:	%{release}
 Summary:	PLT Scheme
 License:	LGPL
 Group:		Development/Other
-Source:		http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
+Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
+Source1:        drscheme.png
 Patch0:		%{name}-370-destdir.patch
 Patch1:		%{name}-370-fix-libtool-use.patch
 Url:		http://www.plt-scheme.org
