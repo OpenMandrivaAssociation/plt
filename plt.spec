@@ -121,7 +121,7 @@ Icon=drscheme
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Development;IDE
+Categories=Development;IDE;
 EOF
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
