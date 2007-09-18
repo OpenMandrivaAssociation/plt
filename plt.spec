@@ -1,6 +1,6 @@
 %define	name 	plt
 %define version 370
-%define release %mkrel 3
+%define release %mkrel 4
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
 
@@ -95,19 +95,13 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 # correct installation
 install -d -m 755 %{buildroot}%{_datadir}
 install -d -m 755 %{buildroot}%{_libdir}/%{name}
-install -d -m 755 %{buildroot}%{_libdir}/%{name}/bin
-mv %{buildroot}%{_bindir}/mred %{buildroot}%{_libdir}/%{name}/bin 
-mv %{buildroot}%{_bindir}/mzscheme %{buildroot}%{_libdir}/%{name}/bin 
-
-ln -s %{_libdir}/plt/mzscheme %{buildroot}%{_bindir}/mzscheme
-ln -s %{_libdir}/plt/mred %{buildroot}%{_bindir}/mred
 
 # correct perms
 find %{buildroot}%{_libdir}/%{name}/collects -type d -exec chmod 755 {} \;
 find %{buildroot}%{_datadir}/%{name}/doc -type d -exec chmod 755 {} \;
 
 # nuke rpath
-chrpath -d  %{buildroot}%{_libdir}/plt/bin/*
+#chrpath -d  %{buildroot}%{_libdir}/plt/bin/*
 
 %multiarch_includes %{buildroot}%{_includedir}/plt/mzconfig.h
 
@@ -156,7 +150,6 @@ rm -rf %{buildroot}
 %exclude %{_mandir}/man1/drscheme.1*
 %exclude %{_libdir}/%{name}/collects/mred
 %exclude %{_libdir}/%{name}/collects/drscheme
-%exclude %{_libdir}/%{name}/bin/mred
 %exclude %{_datadir}/%{name}/doc/mred
 %exclude %{_datadir}/%{name}/doc/drscheme
 
@@ -175,7 +168,6 @@ rm -rf %{buildroot}
 %files mred
 %defattr(-,root,root)
 %{_libdir}/%{name}/collects/mred
-%{_libdir}/%{name}/bin/mred
 %{_bindir}/mred
 %{_mandir}/man1/mred.1*
 %{_datadir}/%{name}/doc/mred
