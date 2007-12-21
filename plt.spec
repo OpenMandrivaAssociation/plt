@@ -19,6 +19,7 @@ BuildRequires:	X11-devel
 BuildRequires:	chrpath
 BuildRequires:	spec-helper >= 0.12
 BuildRequires:	imagemagick
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 PLT Scheme is an umbrella name for a family of implementations of the
