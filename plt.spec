@@ -1,6 +1,6 @@
 %define	name 	plt
-%define version 370
-%define release %mkrel 4
+%define version 371
+%define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
 
@@ -75,8 +75,8 @@ MzScheme and MrEd applications.
 
 %prep
 %setup -q
-%patch0 -p 1
-%patch1 -p 1
+#%patch0 -p 1
+#%patch1 -p 1
 
 %build
 cd src
