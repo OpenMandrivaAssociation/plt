@@ -3,6 +3,7 @@
 %define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
 
 Name:		%{name}
 Version:	%{version}
@@ -10,11 +11,9 @@ Release:	%{release}
 Summary:	PLT Scheme
 License:	LGPL
 Group:		Development/Other
+Url:		http://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
 Source1:        drscheme.png
-Patch0:		%{name}-370-destdir.patch
-Patch1:		%{name}-370-fix-libtool-use.patch
-Url:		http://www.plt-scheme.org
 BuildRequires:	X11-devel
 BuildRequires:	chrpath
 BuildRequires:	spec-helper >= 0.12
@@ -34,14 +33,14 @@ Provides:	%{name} = %{version}-%{release}
 This package contains the library needed to run programs dynamically
 linked with %{name}.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Headers for developing programs that will use %{name}
 Group:		Development/Other
-Requires:	%{libname} = %{version}
-Provides:	lib%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname %{name} -d 370}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 This package contains the headers that programmers will need to develop
 applications which will use %{name}.
 
@@ -75,8 +74,6 @@ MzScheme and MrEd applications.
 
 %prep
 %setup -q
-#%patch0 -p 1
-#%patch1 -p 1
 
 %build
 cd src
@@ -158,7 +155,7 @@ rm -rf %{buildroot}
 %{_libdir}/libmzscheme3m-%{version}.so
 %{_libdir}/libmred3m-%{version}.so
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libmzscheme3m.so
 %{_libdir}/libmred3m.so
