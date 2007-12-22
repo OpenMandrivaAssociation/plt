@@ -15,7 +15,6 @@ Url:		http://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
 Source1:        drscheme.png
 BuildRequires:	X11-devel
-BuildRequires:	chrpath
 BuildRequires:	spec-helper >= 0.12
 BuildRequires:	imagemagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -97,9 +96,6 @@ install -d -m 755 %{buildroot}%{_libdir}/%{name}
 find %{buildroot}%{_libdir}/%{name}/collects -type d -exec chmod 755 {} \;
 find %{buildroot}%{_datadir}/%{name}/doc -type d -exec chmod 755 {} \;
 
-# nuke rpath
-#chrpath -d  %{buildroot}%{_libdir}/plt/bin/*
-
 %multiarch_includes %{buildroot}%{_includedir}/plt/mzconfig.h
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
@@ -116,17 +112,11 @@ Categories=Development;IDE;
 EOF
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,22x22,24x24,32x32,48x48}/apps
-mkdir -p %{buildroot}{%{_miconsdir},%{_liconsdir}}
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
 convert -scale "48X48" %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/drscheme.png
 convert -scale "16x16" %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/drscheme.png
-convert -scale "22x22" %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/22x22/apps/drscheme.png
-convert -scale "24x24" %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/24x24/apps/drscheme.png
 convert -scale "32x32" %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/drscheme.png
 convert -scale "48x48" %{SOURCE1} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/drscheme.png
-convert -scale "16x16" %{SOURCE1} %{buildroot}%{_miconsdir}/drscheme.png
-convert -scale "32x32" %{SOURCE1} %{buildroot}%{_iconsdir}/drscheme.png
-convert -scale "48x48" %{SOURCE1} %{buildroot}%{_liconsdir}/drscheme.png
 
 %clean
 rm -rf %{buildroot}
@@ -177,11 +167,6 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/doc/drscheme
 %{_datadir}/pixmaps/drscheme.png
 %{_iconsdir}/hicolor/16x16/apps/drscheme.png
-%{_iconsdir}/hicolor/22x22/apps/drscheme.png
-%{_iconsdir}/hicolor/24x24/apps/drscheme.png
 %{_iconsdir}/hicolor/32x32/apps/drscheme.png
 %{_iconsdir}/hicolor/48x48/apps/drscheme.png
-%{_miconsdir}/drscheme.png
-%{_iconsdir}/drscheme.png
-%{_liconsdir}/drscheme.png
 %{_datadir}/applications/mandriva-drscheme.desktop
