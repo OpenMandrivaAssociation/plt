@@ -1,15 +1,17 @@
 %define	name 	plt
-%define version 372
-%define release %mkrel 4
+%define version 4.1
+%define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
+%define _disable_ld_as_needed 1
+%define _disable_ld_no_undefined 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	PLT Scheme
-License:	LGPL
+License:	LGPLv2+
 Group:		Development/Other
 Url:		http://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
@@ -141,7 +143,6 @@ rm -rf %{buildroot}
 %exclude %{_mandir}/man1/drscheme.1*
 %exclude %{_libdir}/%{name}/collects/mred
 %exclude %{_libdir}/%{name}/collects/drscheme
-%exclude %{_datadir}/%{name}/doc/mred
 %exclude %{_datadir}/%{name}/doc/drscheme
 
 %files -n %{libname}
@@ -161,7 +162,6 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/collects/mred
 %{_bindir}/mred
 %{_mandir}/man1/mred.1*
-%{_datadir}/%{name}/doc/mred
 
 %files drscheme
 %defattr(-,root,root)
