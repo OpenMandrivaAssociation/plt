@@ -6,6 +6,7 @@
 %define develname %mklibname %{name} -d
 %define _disable_ld_as_needed 1
 %define _disable_ld_no_undefined 1
+%define epoch 1
 
 Name:		%{name}
 Version:	%{version}
@@ -19,6 +20,7 @@ Source1:        drscheme.png
 BuildRequires:	X11-devel
 BuildRequires:	spec-helper >= 0.12
 BuildRequires:	imagemagick
+Epoch:		%{epoch}
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -28,7 +30,7 @@ Scheme programming language.
 %package -n	%{libname}
 Summary:	Main library for %{name}
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
+Provides:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
@@ -37,8 +39,8 @@ linked with %{name}.
 %package -n	%{develname}
 Summary:	Headers for developing programs that will use %{name}
 Group:		Development/Other
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{epoch}:%{version}-%{release}
+Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	%{mklibname %{name} -d 370}
 
 %description -n	%{develname}
@@ -48,7 +50,7 @@ applications which will use %{name}.
 %package	mzscheme
 Summary:	PLT Scheme implementation
 Group:		Development/Other
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{epoch}:%{version}
 
 %description mzscheme
 MzScheme is the PLT Scheme implementation. It implements
@@ -58,7 +60,7 @@ Algorithmic Language Scheme and adds numerous extensions.
 %package	mred
 Summary:	PLT graphical Scheme implementation
 Group:		Development/Other
-Requires:	%{name}-mzscheme = %{version}
+Requires:	%{name}-mzscheme = %{epoch}:%{version}
 
 %description	mred
 MrEd is the PLT's graphical Scheme implementation. It embeds and
@@ -67,7 +69,7 @@ extends MzScheme with a graphical user interface (GUI) toolbox.
 %package	drscheme
 Summary:	PLT graphical development environment
 Group:		Development/Other
-Requires:	%{name}-mred = %{version}
+Requires:	%{name}-mred = %{epoch}:%{version}
 
 %description	drscheme
 DrScheme is the graphical development environment for creating 
