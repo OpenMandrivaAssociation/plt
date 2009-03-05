@@ -1,5 +1,5 @@
 %define	name 	plt
-%define version 4.1.3
+%define version 4.1.4
 %define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
@@ -17,6 +17,7 @@ Group:		Development/Other
 Url:		http://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
 Source1:        drscheme.png
+Patch0:		plt-4.1.4-strfmt.patch
 BuildRequires:	X11-devel
 BuildRequires:	spec-helper >= 0.12
 BuildRequires:	imagemagick
@@ -77,6 +78,7 @@ MzScheme and MrEd applications.
 
 %prep
 %setup -q
+%patch0 -p1 -b .strfmt
 
 %build
 cd src
