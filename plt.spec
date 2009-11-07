@@ -1,5 +1,5 @@
 %define	name 	plt
-%define version 4.2.1
+%define version 4.2.2
 %define release %mkrel 1
 %define major	%{version}
 %define libname %mklibname %{name} %{major}
