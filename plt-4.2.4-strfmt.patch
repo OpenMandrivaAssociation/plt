@@ -1,0 +1,12 @@
+diff -ur plt-4.2.4.orig/src/mzscheme/cmdline.inc plt-4.2.4/src/mzscheme/cmdline.inc
+--- plt-4.2.4.orig/src/mzscheme/cmdline.inc	2010-01-18 07:06:57.000000000 +0100
++++ plt-4.2.4/src/mzscheme/cmdline.inc	2010-01-29 21:05:44.000000000 +0100
+@@ -999,7 +999,7 @@
+ # ifdef DOS_FILE_SYSTEM
+ #  if !defined(FILES_HAVE_FDS)
+ #   if !defined(WINDOWS_FILE_HANDLES)
+-    PRINTF("Warning: read-eval-print-loop or read on a stream port may block threads.\n");
++    PRINTF("%s", "Warning: read-eval-print-loop or read on a stream port may block threads.\n");
+ #   endif
+ #  endif
+ # endif
