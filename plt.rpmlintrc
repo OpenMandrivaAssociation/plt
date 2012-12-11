@@ -1,0 +1,2 @@
+addFilter("unexpanded-macro.*")
+addFilter("wrong-script-interpreter.*")
