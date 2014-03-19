@@ -14,6 +14,7 @@ Group:		Development/Other
 Url:		http://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
 Source1:        drscheme.png
+Source2:        %{name}.rpmlintrc
 Patch0:		plt-4.2.4-strfmt.patch
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	xaw-devel
