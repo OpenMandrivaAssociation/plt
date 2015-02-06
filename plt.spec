@@ -7,7 +7,7 @@
 
 Name:		plt
 Version:	4.2.4
-Release:	3
+Release:	4
 Summary:	PLT Scheme
 License:	LGPLv2+
 Group:		Development/Other
