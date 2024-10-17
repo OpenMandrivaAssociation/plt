@@ -11,7 +11,7 @@ Release:	4
 Summary:	PLT Scheme
 License:	LGPLv2+
 Group:		Development/Other
-Url:		http://www.plt-scheme.org
+Url:		https://www.plt-scheme.org
 Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version}-src-unix.tgz
 Source1:        drscheme.png
 Source2:        %{name}.rpmlintrc
