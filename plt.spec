@@ -16,6 +16,11 @@ Source0:	http://download.plt-scheme.org/bundles/%{version}/plt/%{name}-%{version
 Source1:        drscheme.png
 Source2:        %{name}.rpmlintrc
 Patch0:		plt-4.2.4-strfmt.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	xaw-devel
 BuildRequires:	spec-helper >= 0.12
